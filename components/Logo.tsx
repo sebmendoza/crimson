@@ -1,0 +1,152 @@
+import React from "react";
+
+function Logo() {
+  return (
+    <svg
+      width="80"
+      height="85"
+      viewBox="0 0 95 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter="url(#filter0_d_17_1357)">
+        <rect
+          x="44.1538"
+          width="46.8462"
+          height="60.2308"
+          rx="10"
+          fill="#FF8B8B"
+        />
+      </g>
+      <g filter="url(#filter1_d_17_1357)">
+        <rect
+          x="24.0769"
+          y="15.6154"
+          width="46.8462"
+          height="60.2308"
+          rx="10"
+          fill="#FFDEDE"
+        />
+      </g>
+      <g filter="url(#filter2_d_17_1357)">
+        <rect
+          x="4"
+          y="31.2308"
+          width="46.8462"
+          height="60.2308"
+          rx="10"
+          fill="#ABC9FF"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_17_1357"
+          x="40.1538"
+          y="0"
+          width="54.8461"
+          height="68.2308"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_17_1357"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_17_1357"
+            result="shape"
+          />
+        </filter>
+        <filter
+          id="filter1_d_17_1357"
+          x="20.0769"
+          y="15.6154"
+          width="54.8461"
+          height="68.2308"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_17_1357"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_17_1357"
+            result="shape"
+          />
+        </filter>
+        <filter
+          id="filter2_d_17_1357"
+          x="0"
+          y="31.2308"
+          width="54.8461"
+          height="68.2308"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_17_1357"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_17_1357"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
+export default Logo;
