@@ -4,9 +4,9 @@ function BackgroundImage() {
   return (
     <div className="absolute invisible md:visible w-full">
       <svg
-        className="w-full"
+        className="w-full h-screen"
         // width="1440"
-        height="827"
+        // height=""
         viewBox="0 0 1440 827"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

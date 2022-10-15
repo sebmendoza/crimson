@@ -10,7 +10,9 @@ function DashNav() {
         <div className="bg-white shadow-[6px_6px_4px_rgba(0,0,0,0.3)] w-64 rounded-3xl flex flex-col items-center">
           <div className="py-4">
             <Link href="/" className="cursor-pointer">
-              <Logo />
+              <a href="">
+                <Logo />
+              </a>
             </Link>
           </div>
           <div className="relative h-36 w-36">
