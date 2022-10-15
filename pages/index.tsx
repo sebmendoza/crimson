@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-// import BackgroundImage from "../components/BackgroundImage";
+import BackgroundImage from "../components/BackgroundImage";
 import Hero from "../components/Hero";
 import TodaysUpdate from "../components/TodaysUpdate";
 // import Logo from "../assets/Logo.svg";
@@ -15,10 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="./Logo.svg" />
       </Head>
 
-      {/* <div className="absolute top-0 z-0 width-full">
-        <BackgroundImage />
-        <Image src="/../assets/Logo.svg" alt="hello" layout="fill" />
-      </div> */}
+      <BackgroundImage />
 
       {/* Hero */}
       <Hero />
