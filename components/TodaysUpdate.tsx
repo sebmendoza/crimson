@@ -5,7 +5,17 @@ import ActionCard from "./ActionCard";
 import Link from "next/link";
 import { Element } from "react-scroll";
 
+import { useObject } from "react-firebase-hooks/database"
+import { child, ref, onChildAdded, DatabaseReference, Database, get, DataSnapshot } from "firebase/database";
+
+import db from "../backend/firebaseInit";
+import { baseDataPoint, buttonDataPoint, knobDataPoint, dialDataPoint, switchDataPoint, action, emotion } from "../backend/packetStructure";
+
 function TodaysUpdate() {
+
+  const reference = ref(db, "/device/");
+  const [snapshot, loading, error] = useObject(reference);
+
   return (
     <div className="h-screen">
       {/* Blob #1 */}
