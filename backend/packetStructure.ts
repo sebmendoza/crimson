@@ -3,104 +3,76 @@ General message structure, will be modified when incoming data is analyzed.
 */
 
 /**
- * The colour possibilities for buttons pressed.
- */
- export enum colour {
-    RED = 'red',
-    ORANGE = 'orange',
-    YELLOW = 'yellow',
-    GREEN = 'blue',
-    BLUE = 'blue',
-    PINK = 'pink',
-    PURPLE = 'purple',
-    BROWN = 'brown',
-    BLACK = 'black',
-};
-
-/**
- * The emotion possibilities for the dial.
+ * The emotion possibilities and subsequent colours.
  */
 export enum emotion {
-    HAPPY = 'happy',
-    SAD = 'sad',
-    ANGRY = 'angry',
-    SCARED = 'scared',
-    EXCITED = 'excited',
-    BORED = 'bored'
+    HAPPY = 'yellow',
+    SAD = 'blue',
+    ANGRY = 'red',
+    BORED = 'green'
 };
 
-/**
- * The sensor possibilities from which the packet has been sent from.
- */
-export enum sensor {
-    BUTTON = 'button',
-    DIAL = 'dial',
-    GEAR = 'gear'
-};
+export enum action {
+    HUNGRY = 'hungry',
+    QUIET_TIME = 'quiet_time',
+    PLAY_TIME = 'play',
+    SLEEP = 'sleep'
+}
 
 /**
  * The base data structure for incoming packets.
  * 
- * @param sensor
- * An enum to specify the sesnsor from which the data is being sent.
- * 
  * @param id
  * A unique id string for the data point.
- */
-export interface baseDataPoint {
-    sensor: sensor;
-    id: string;
-};
-
-/**
- * An extension of the baseDataPoint for frequency packets.
- * 
- * @param amount
- * The number of actions.
  * 
  * @param time
- * The time in milliseconds since a previous packet has been sent from this sensor.
- * 
- * @param frequency
- * The frequency of actions per time.
+ * The time this interaction was recorded by the device.
  */
-export interface freqDataPoint extends baseDataPoint {
-    time: number;
-    amount: number;
-    frequency: number;
+export interface baseDataPoint {
+    id: string;
+    time: string;
 };
 
 /**
- * An extension of the freqDataPoint for buttons.
- * 
- * @param colour
- * An enum to specify which colour was pressed.
- * 
- */
-export interface buttonDataPoint extends freqDataPoint {
-    colour: colour;
-};
-
-/**
- * An extension of the freqDataPoint for the gear.
- * 
- * @param direction
- * The direction the gear was turned in. 
- */
-export interface gearDataPoint extends freqDataPoint {
-    direction: number;
-};
-
-/**
- * An extension of the baseDataPoint for the dial.
+ * The button data structure for incoming packets.
  * 
  * @param emotion
- * The current emotion that the dial is set to.
+ * The emotion set by the user.
  * 
- * @param prev_emotion
- * The previous emotion that the dial was set to.
+ * @param intensity
+ * The intensity set by the user.
+ */
+export interface buttonDataPoint extends baseDataPoint {
+    emotion: emotion;
+    intensity: number;
+}
+
+/**
+ * The knob data structure for incoming packets.
+ * 
+ * @param action
+ * The action set by the user.
+ */
+export interface knobDataPoint extends baseDataPoint {
+    action: action;
+}
+
+/**
+ * The knob data structure for incoming packets.
+ * 
+ * @param interaction
+ * The amount of interaction from the user.
  */
 export interface dialDataPoint extends baseDataPoint {
-    emotion: emotion;
-    prev_emotion: emotion;
-};
+    interection: string;
+}
+
+/**
+ * The knob data structure for incoming packets.
+ * 
+ * @param value
+ * The yes or no value set by the user.
+ */
+export interface switchDataPoint extends baseDataPoint {
+    value: string;
+}
