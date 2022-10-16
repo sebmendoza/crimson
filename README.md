@@ -31,5 +31,8 @@ The Crimson Cube runs on the NodeMCU ESP8266 microcontroller. The different comm
 - Fidget Tracker: A potentiometer which displays the differences in voltage measured to determine the amount of time the toy is used.
 - Dial: A rotary encoder which measures the amount it has been rotated to determine the action the user wants.
 
+### Mechanical
+The Crimson Cube employs SLS 3D-printing technology for all of the mechanical aspects of the device. Designed on OnShape and printed overnight. 
+
 ### Software
 
