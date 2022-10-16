@@ -1,24 +1,3 @@
-/*
-General message structure, will be modified when incoming data is analyzed.
-*/
-
-/**
- * The emotion possibilities and subsequent colours.
- */
-export enum emotion {
-    HAPPY = 'yellow',
-    SAD = 'blue',
-    ANGRY = 'red',
-    BORED = 'green'
-};
-
-export enum action {
-    HUNGRY = 'hungry',
-    QUIET_TIME = 'quiet_time',
-    PLAY_TIME = 'play',
-    SLEEP = 'sleep'
-}
-
 /**
  * The base data structure for incoming packets.
  * 
@@ -75,4 +54,21 @@ export interface dialDataPoint extends baseDataPoint {
  */
 export interface switchDataPoint extends baseDataPoint {
     value: string;
+}
+
+/**
+ * The emotion possibilities and subsequent colours.
+ */
+ export enum emotion {
+    HAPPY = 'yellow',
+    SAD = 'blue',
+    ANGRY = 'red',
+    BORED = 'green'
+};
+
+export enum action {
+    HUNGRY = 'hungry',
+    QUIET_TIME = 'quiet_time',
+    PLAY_TIME = 'play',
+    SLEEP = 'sleep'
 }
