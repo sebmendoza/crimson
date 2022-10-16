@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Planet, Browser } from "react-kawaii";
-import { Doughnut } from "react-chartjs-2"
+import { Doughnut } from "react-chartjs-2";
 import {
   child,
   ref,
@@ -18,10 +18,10 @@ import {
   startAt,
   equalTo,
   limitToFirst,
-  limitToLast
+  limitToLast,
 } from "firebase/database";
 
-import {Chart, ArcElement, Tooltip, Legend} from 'chart.js'
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 Chart.register(ArcElement, Tooltip, Legend);
 
 import { db } from "../backend/firebaseInit";
@@ -77,15 +77,18 @@ const intensities = {
   20: 2,
   40: 3,
   60: 4,
-  80: 5
-}
+  80: 5,
+  default: 5,
+};
 
 function MoodCard() {
-
   // Current Mood Data Fetching
   // -------------------------------------------------------------------------------------------
   const [mood_current_data, setMoodCurrentData] = useState<any>({});
-  const mood_current_reference = query(ref(db, "/device/"), orderByChild("/emotion/"));
+  const mood_current_reference = query(
+    ref(db, "/device/"),
+    orderByChild("/emotion/")
+  );
 
   useEffect(() => {
     onChildAdded(mood_current_reference, (mood_current_data) => {
@@ -103,56 +106,81 @@ function MoodCard() {
     : descriptions.default;
   const intensity = hasCurrentMoodData
     ? intensities[mood_current_data?.intensity as keyof typeof intensities]
-    : 0;
+    : intensities.default;
 
-  // console.log({ colour, mood });
   console.log("Current Mood Object:", mood_current_data);
 
-  // // Day Mood Fetching Data
-  // // -------------------------------------------------------------------------------------------
-  // // const [mood_day_data, setMoodDayData] = useState<any>({});
-  // // const mood_day_reference = query(ref(db, "/device/"), orderByChild('/emotion/'), limitToLast(100));
+  // Day Mood Donut Fetching Data
+  // -------------------------------------------------------------------------------------------
+  let [colourCount, setColourCount] = useState({
+    blue: 0,
+    red: 0,
+    green: 0,
+    yellow: 0,
+  });
+  const mood_day_reference = query(
+    ref(db, "/device/"),
+    orderByChild("/emotion/"),
+    limitToFirst(100)
+  );
+  let [moodDonut, setMoodDonut] = useState({
+      labels: ["Red", "Blue", "Yellow", "Green"],
+      datasets: [
+        {
+          label: "Mood Data",
+          data: [
+            1,
+            2,
+            3,
+            4
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+        },
+      ],
+    }
+  )
 
-  // const colourCount = {
-  //   blue: 0,
-  //   red: 0,
-  //   green: 0,
-  //   yellow: 0,
-  // }
+  useEffect(() => {
+    get(mood_day_reference).then((res) => {
+      console.log(res.val());
+      const array: any[] = Object.values(res.val());
 
-  // // useEffect(() => {
-  // //   get(mood_day_reference)
-  // //   .then((res) => {
-  // //     console.log(res.val());
-  // //     const array: any[] = Object.values(res.val());
-      
-  // //     for (let i = 0; i < array.length; i++) {
-  // //       if (array[i].emotion in colourCount) {
-  // //         colourCount[array[i].emotion as keyof typeof colourCount] += 1;
-  // //       }
-  // //     }
+      for (let i = 0; i < array.length; i++) {  
+        colourCount[array[i].emotion as keyof typeof colourCount] += 1;
+      }
 
-  // //     });
-  // // }, [mood_current_data]);
+      setColourCount(colourCount);
+    });
+  }, [mood_current_data]);
 
-  // // console.log(mood_day_data)
-
-  // const fakeData = {
-  //   labels: ["Red", "Blue", "Yellow", "Green"],
-  //   datasets: [
-  //     {
-  //       label: 'Fake Data',
-  //       data: [colourCount.blue, colourCount.green, colourCount.yellow, colourCount.red],
-  //       backgroundColor: [
-  //         'rgba(255, 99, 132, 0.2)',
-  //         'rgba(54, 162, 235, 0.2)',
-  //         'rgba(255, 206, 86, 0.2)',
-  //         'rgba(75, 192, 192, 0.2)',
-  //       ],
-  //     }
-  //   ],
-    
-  // };
+  useEffect(() => {
+    let moodDonut = {
+      labels: ["Red", "Blue", "Yellow", "Green"],
+      datasets: [
+        {
+          label: "Mood Data",
+          data: [
+            colourCount.red,
+            colourCount.blue,
+            colourCount.yellow,
+            colourCount.green,
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+        },
+      ],
+    };
+    setMoodDonut(moodDonut);
+  }, [mood_current_data]);
 
   // -------------------------------------------------------------------------------------------
   return (
@@ -160,8 +188,13 @@ function MoodCard() {
       <h3 className="text-xl pl-4 py-4 font-semibold">Current Mood</h3>
 
       <div className="flex flex-col md:flex-row pl-6 pb-5 space-x-6">
-        <div className="flex flex-col grow items-center">
-          {hasCurrentMoodData ? <p className="pb-2">{description} - {intensity}/5</p> : null}
+        <div className="flex flex-col grow items-center pt-6">
+          {hasCurrentMoodData ? (
+            <p className="pb-2">
+              {description} -{" "}
+              {intensity in intensities ? intensity : intensities.default}/5
+            </p>
+          ) : null}
           {hasCurrentMoodData ? (
             <Planet mood={mood} color={colour} size={150} />
           ) : (
@@ -191,7 +224,7 @@ function MoodCard() {
       <div className="flex justify-center">
         <div className="mb-6 mx-5 flex flex-col items-center justify-center">
           <div className="w-64 mb-4">
-          {/* <Doughnut data={fakeData}/> */}
+            <Doughnut data={moodDonut} />
           </div>
           Todays Records
         </div>

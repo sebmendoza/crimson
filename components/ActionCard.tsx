@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Chocolate, Browser, Mug, Backpack, Ghost } from "react-kawaii";
+import { Doughnut } from "react-chartjs-2";
 import {
   child,
   ref,
@@ -13,10 +14,14 @@ import {
   orderByKey,
   orderByPriority,
   orderByValue,
+  limitToLast,
+  limitToFirst
 } from "firebase/database";
 
 import { db } from "../backend/firebaseInit";
 
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
+Chart.register(ArcElement, Tooltip, Legend);
 
 const actions = {
   hungry: <Chocolate mood="ko" color="EB4747" size={150} />,
@@ -76,7 +81,77 @@ function ActionCard() {
     : descriptions.default;
 
   // console.log({ colour, mood });
-  console.log("Current Action Object:", action_current_data?.action);
+  console.log("Current Action Object:", action_current_data);
+
+  // Day Mood Donut Fetching Data
+  // -------------------------------------------------------------------------------------------
+  let [actionCount, setColourCount] = useState({
+    sleep: 0,
+    play: 0,
+    quiet: 0,
+    hungry: 0,
+  });
+  const action_day_reference = query(
+    ref(db, "/device/"),
+    orderByChild("/action/"),
+    limitToFirst(100)
+  );
+  let [actionDonut, setActionDonut] = useState({
+      labels: ["Sleep", "Play", "Quiet", "Hungry"],
+      datasets: [
+        {
+          label: "Action Data",
+          data: [
+            1,
+            2,
+            3,
+            4
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+        },
+      ],
+    }
+  )
+
+  useEffect(() => {
+    get(action_day_reference).then((res) => {
+      console.log(res.val());
+      const array: any[] = Object.values(res.val());
+
+      for (let i = 0; i < array.length; i++) {  
+        actionCount[array[i].action as keyof typeof actionCount] += 1;
+      }
+    });
+  }, [action_current_data]);
+
+  useEffect(() => {
+    let actionDonut = {
+      labels: ["Sleep", "Play", "Quiet", "Hungry"],
+      datasets: [
+        {
+          label: "Action Data",
+          data: [
+            actionCount.sleep,
+            actionCount.play,
+            actionCount.quiet,
+            actionCount.hungry,
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+        },
+      ],
+    };
+    setActionDonut(actionDonut);
+  }, [action_current_data]);
 
   // -------------------------------------------------------------------------------------------
   return (
@@ -84,7 +159,7 @@ function ActionCard() {
       <h3 className="text-xl pl-4 py-4 font-semibold">Recent Actions</h3>
 
       <div className="flex flex-col md:flex-row pl-6 pb-5 space-x-6">
-        <div className="flex flex-col grow items-center">
+        <div className="flex flex-col grow items-center pt-6">
           <>{hasCurrentActionData ? <p className="pb-2 capitalize">{dial}</p> : null}
           {hasCurrentActionData ? 
             action  
@@ -108,16 +183,18 @@ function ActionCard() {
               </p>
             </>
           ) : (
-            <p>Do not have data.</p>
+            <p>No Data Yet. Come back later.<br></br><br></br><br></br><br></br><br></br></p>
           )}
         </div>
       </div>
 
       {/* Today's Records */}
       <div className="flex justify-center">
-        <div className="h-64 w-64 mb-6 mx-5 flex flex-col items-center justify-center rounded-full bg-crimson-d-grey text-white">
-          Here are the records from today
-          <p>Insert Graph Here</p>
+        <div className="mb-6 mx-5 flex flex-col items-center justify-center">
+          <div className="w-64 mb-4">
+            <Doughnut data={actionDonut} />
+          </div>
+          Todays Records
         </div>
       </div>
     </div>

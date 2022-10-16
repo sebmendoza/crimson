@@ -5,7 +5,6 @@ import ActionCard from "./ActionCard";
 import Link from "next/link";
 import { Element } from "react-scroll";
 
-import { useObject } from "react-firebase-hooks/database";
 import {
   child,
   ref,
@@ -17,15 +16,6 @@ import {
 } from "firebase/database";
 
 import { db } from "../backend/firebaseInit";
-// import {
-//   baseDataPoint,
-//   buttonDataPoint,
-//   knobDataPoint,
-//   dialDataPoint,
-//   switchDataPoint,
-//   action,
-//   emotion,
-// } from "../backend/packetStructure";
 
 function TodaysUpdate() {
 
@@ -102,16 +92,9 @@ function TodaysUpdate() {
       </div>
 
       {/* Cards */}
-      <div className="flex flex-col md:flex-row mx-10 md:mx-20 justify-center gap-x-6 gap-y-6 my-10">
+      <div className="flex flex-col md:flex-row mx-10 md:mx-20 justify-center gap-x-6 gap-y-6 my-10 pb-10">
         <MoodCard />
         <ActionCard />
-      </div>
-
-      {/* Progress Bar */}
-      <div className="flex flex-col mx-10 md:mx-20 justify-center pb-16">
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        <h3 className="">Today's Timeline</h3>
-        <div className="bg-crimson-blue h-14 mt-4 rounded-full"></div>
       </div>
     </div>
   );
