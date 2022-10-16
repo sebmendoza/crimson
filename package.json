@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.12",
+    "chart.js": "^3.9.1",
     "firebase": "^9.12.1",
     "firebase-react-hooks": "^0.8.0",
     "next": "12.3.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",
     "react-kawaii": "^0.18.0",
