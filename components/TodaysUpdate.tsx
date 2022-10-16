@@ -13,9 +13,6 @@ import { baseDataPoint, buttonDataPoint, knobDataPoint, dialDataPoint, switchDat
 
 function TodaysUpdate() {
 
-  const reference = ref(db, "/device/");
-  const [snapshot, loading, error] = useObject(reference);
-
   return (
     <div className="h-screen">
       {/* Blob #1 */}
