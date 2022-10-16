@@ -108,7 +108,7 @@ function MoodCard() {
     ? intensities[mood_current_data?.intensity as keyof typeof intensities]
     : intensities.default;
 
-  console.log("Current Mood Object:", mood_current_data);
+  // console.log("Current Mood Object:", mood_current_data);
 
   // Day Mood Donut Fetching Data
   // -------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ function MoodCard() {
 
   useEffect(() => {
     get(mood_day_reference).then((res) => {
-      console.log(res.val());
+      // console.log(res.val());
       const array: any[] = Object.values(res.val());
 
       for (let i = 0; i < array.length; i++) {
@@ -158,12 +158,7 @@ function MoodCard() {
       datasets: [
         {
           label: "Mood Data",
-          data: [
-            3,
-            9,
-            6,
-            1,
-          ],
+          data: [3, 9, 6, 1],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",

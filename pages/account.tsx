@@ -17,7 +17,7 @@ function Account() {
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser: any) => {
       setUser(currentUser);
-      console.log({ user });
+      // console.log({ user });
     });
   }, []);
 
@@ -28,9 +28,9 @@ function Account() {
         registerEmail,
         registerPassword
       );
-      console.log(user);
+      // console.log(user);
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
   const login = async () => {};
