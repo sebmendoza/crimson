@@ -590,6 +590,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-kawaii@^0.17.0":
+  "integrity" "sha512-cKFbubP4QBx36fK/R+K7A/oqtE32QnuZ0Ek//B4ex8ADwXwu9+dfrfCWwYi3UNtHQmPgQ5wHQjTS5MsGNyuG6g=="
+  "resolved" "https://registry.npmjs.org/@types/react-kawaii/-/react-kawaii-0.17.0.tgz"
+  "version" "0.17.0"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-scroll@^1.8.4":
   "integrity" "sha512-DpHA9PYw42/rBrfKbGE/kAEvHRfyDL/ACfKB/ORWUYuCLi/yGrntxSzYXmg/7TLgQsJ5ma13GCDOzFSOz+8XOA=="
   "resolved" "https://registry.npmjs.org/@types/react-scroll/-/react-scroll-1.8.4.tgz"

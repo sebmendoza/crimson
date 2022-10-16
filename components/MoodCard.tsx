@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaceSmileIcon } from "@heroicons/react/24/solid";
-
+import { Planet, Browser } from "react-kawaii";
 import { useObject } from "react-firebase-hooks/database";
 import {
   child,
@@ -24,6 +23,51 @@ import { db } from "../backend/firebaseInit";
 // } from "../backend/packetStructure";
 // import { object } from "prop-types";
 
+const faces = {
+  red: {
+    colour: "#EB4747",
+    mood: "shocked",
+  },
+  green: {
+    colour: "#FCCB7E",
+    mood: "ko",
+  },
+  yellow: {
+    colour: "#FFD882",
+    mood: "blissful",
+  },
+  blue: {
+    colour: "#ABC9FF",
+    mood: "sad",
+  },
+  default: {
+    colour: "#808080",
+    mood: "ko",
+  },
+};
+
+const descriptions = {
+  red: {
+    button: "red",
+    description: "angry",
+  },
+  green: {
+    button: "green",
+    description: "bored",
+  },
+  yellow: {
+    button: "yellow",
+    description: "happy",
+  },
+  blue: {
+    button: "blue",
+    description: "sad",
+  },
+  default: {
+    button: null,
+    description: "",
+  },
+};
 function MoodCard() {
   const [data, setData] = useState<any>({});
 
@@ -35,7 +79,17 @@ function MoodCard() {
     });
   }, []);
 
-  console.log(data);
+  const hasData: boolean = data?.emotion ? true : false;
+
+  const { colour, mood } = hasData
+    ? faces[data?.emotion as keyof typeof faces]
+    : faces.default;
+  const { button, description } = hasData
+    ? descriptions[data?.emotion as keyof typeof descriptions]
+    : descriptions.default;
+
+  // console.log({ colour, mood });
+  console.log(data.emotion);
 
   return (
     <div className=" bg-white shadow-[8px_8px_4px_rgba(0,0,0,0.3)] rounded-2xl ">
@@ -43,17 +97,29 @@ function MoodCard() {
 
       <div className="flex flex-col md:flex-row pl-6 pb-5">
         <div className="flex flex-col grow items-center">
-          <p>Happy - Lvl 8</p>
-          <FaceSmileIcon className="h-32" />
+          {hasData ? <p className="pb-2">Happy - Lvl 8</p> : null}
+          {hasData ? (
+            <Planet mood={mood} color={colour} size={150} />
+          ) : (
+            <Browser mood={mood} color={colour} size={150} />
+          )}
         </div>
         <div className="pt-5 px-6">
-          <p className="pb-5">
-            Your child has interacted with the green button on their crimson
-            crasher device.
-          </p>
-          <p>
-            This is their way of communicating that they’re enjoying their day.
-          </p>
+          {hasData ? (
+            <>
+              <p className="pb-5">
+                Your child has interacted with the
+                <span className="underline">{button}</span> on their crimson
+                crasher device.
+              </p>
+              <p>
+                This is their way of communicating that they’re currently
+                <span className="underline">{description}</span>.
+              </p>
+            </>
+          ) : (
+            <p>No Data Yet. Come back later.</p>
+          )}
         </div>
       </div>
 
