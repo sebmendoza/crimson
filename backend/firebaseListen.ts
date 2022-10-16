@@ -1,4 +1,4 @@
-import db from "./firebaseInit";
+import { db} from "./firebaseInit";
 import { child, ref, onChildAdded, DatabaseReference, Database, get, DataSnapshot } from "firebase/database";
 import { baseDataPoint, buttonDataPoint, knobDataPoint, dialDataPoint, switchDataPoint, action, emotion } from "./packetStructure";
 import { useObject } from "react-firebase-hooks/database"
