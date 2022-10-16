@@ -7,8 +7,6 @@ import {
   Title,
   Tooltip,
   Legend,
-  PointElement,
-  LineElement,
 } from "chart.js";
 import { Bar, Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
@@ -19,12 +17,10 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend,
-  PointElement,
-  LineElement
+  Legend
 );
 
-function TimeGraph() {
+function BarGraph() {
   const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   const data = {
@@ -62,10 +58,9 @@ function TimeGraph() {
 
   return (
     <div>
-      {/* <Bar options={options} data={data} /> */}
-      <Line options={options} data={data} />
+      <Bar options={options} data={data} />
     </div>
   );
 }
 
-export default TimeGraph;
+export default BarGraph;
