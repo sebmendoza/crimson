@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowLongRightIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import MoodCard from "./MoodCard";
 import ActionCard from "./ActionCard";
@@ -28,6 +28,18 @@ import { db } from "../backend/firebaseInit";
 // } from "../backend/packetStructure";
 
 function TodaysUpdate() {
+
+  const [data, setData] = useState<any>({});
+  const reference = ref(db, "/device/");
+
+  useEffect(() => {
+    onChildAdded(reference, (data) => {
+      setData(data.val());
+    });
+  }, []);
+
+  console.log(data);
+
   return (
     <div className="h-screen">
       {/* Blob #1 */}
@@ -67,7 +79,7 @@ function TodaysUpdate() {
           </button>
         </div>
         <p className="text-xl text-crimson-d-grey pl-2 pt-3">
-          Last Input Time: 13:04:22
+          Last Input Time: {data?.time}
         </p>
       </div>
       {/* Blob 2 */}

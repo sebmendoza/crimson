@@ -70,8 +70,7 @@ const descriptions = {
 };
 function MoodCard() {
   const [data, setData] = useState<any>({});
-
-  const reference = ref(db, "/device/button");
+  const reference = ref(db, "/device/");
 
   useEffect(() => {
     onChildAdded(reference, (data) => {
@@ -89,7 +88,7 @@ function MoodCard() {
     : descriptions.default;
 
   // console.log({ colour, mood });
-  console.log(data.emotion);
+  console.log("Current Object:", data.emotion);
 
   return (
     <div className=" bg-white shadow-[8px_8px_4px_rgba(0,0,0,0.3)] rounded-2xl ">
