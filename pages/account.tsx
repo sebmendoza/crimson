@@ -63,7 +63,7 @@ function Account() {
 
         <button> Login</button>
       </div>
-      <h4> User Logged In:</h4> <p>{user}</p>
+      <h4> User Logged In:</h4>
       <button onClick={logout}> Sign Out </button>
     </div>
   );

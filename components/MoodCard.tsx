@@ -1,15 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { FaceSmileIcon } from "@heroicons/react/24/solid";
 
-import { useObject } from "react-firebase-hooks/database"
-import { child, ref, onChildAdded, DatabaseReference, Database, get, DataSnapshot } from "firebase/database";
+import { useObject } from "react-firebase-hooks/database";
+import {
+  child,
+  ref,
+  onChildAdded,
+  DatabaseReference,
+  Database,
+  get,
+  DataSnapshot,
+} from "firebase/database";
 
-import db from "../backend/firebaseInit";
-import { baseDataPoint, buttonDataPoint, knobDataPoint, dialDataPoint, switchDataPoint, action, emotion } from "../backend/packetStructure";
-import { object } from "prop-types";
+import { db } from "../backend/firebaseInit";
+// import {
+//   baseDataPoint,
+//   buttonDataPoint,
+//   knobDataPoint,
+//   dialDataPoint,
+//   switchDataPoint,
+//   action,
+//   emotion,
+// } from "../backend/packetStructure";
+// import { object } from "prop-types";
 
 function MoodCard() {
-  const [data, setData] = useState<any>({}); 
+  const [data, setData] = useState<any>({});
 
   const reference = ref(db, "/device/button");
 
@@ -17,10 +33,10 @@ function MoodCard() {
     onChildAdded(reference, (data) => {
       setData(data.val());
     });
-  },[])
+  }, []);
 
-  console.log(data)
-  
+  console.log(data);
+
   return (
     <div className=" bg-white shadow-[8px_8px_4px_rgba(0,0,0,0.3)] rounded-2xl ">
       <h3 className="text-xl pl-4 py-4">Current Mood</h3>
