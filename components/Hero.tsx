@@ -12,6 +12,7 @@ function Hero() {
 
       <div className="relative top-1/4 md:top-1/3 ">
         <h1 className="text-5xl text-center font-bold md:text-left md:ml-10">
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           Welcome to Crimson's Interactive Application
         </h1>
 
