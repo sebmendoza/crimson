@@ -22,9 +22,14 @@ Open demo link: (click here!)[]
 
 
 ## The Build
-Crimson is a Iot project that utilizes and blends embedded systems, web development and database management. 
+Crimson is an Iot project that utilizes and blends embedded systems, web development and database management. 
 
 ### Hardware
+The Crimson Cube runs on the NodeMCU ESP8266 microcontroller. The different communication features are wired to the microcontroller which then packs the data and pushes it to the Firebase database in the form of JSON objects. The Cube was also prototyped on an Arduino UNO for prototyping purposes. The communication features are wired as follows:
+- Buttons: Rotary encoders which can rotate to set mood intensity and then clicked to confirm.
+- Switch: Toggle switch to represent likes and dislikes to questions in real-time.
+- Fidget Tracker: A potentiometer which displays the differences in voltage measured to determine the amount of time the toy is used.
+- Dial: A rotary encoder which measures the amount it has been rotated to determine the action the user wants.
 
 ### Software
 
