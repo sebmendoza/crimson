@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Planet, Browser } from "react-kawaii";
+import { Planet, Browser, KawaiiMood } from "react-kawaii";
 import { Doughnut } from "react-chartjs-2";
 import {
   child,
@@ -124,33 +124,27 @@ function MoodCard() {
     limitToFirst(100)
   );
   let [moodDonut, setMoodDonut] = useState({
-      labels: ["Red", "Blue", "Yellow", "Green"],
-      datasets: [
-        {
-          label: "Mood Data",
-          data: [
-            1,
-            2,
-            3,
-            4
-          ],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-          ],
-        },
-      ],
-    }
-  )
+    labels: ["Red", "Blue", "Yellow", "Green"],
+    datasets: [
+      {
+        label: "Mood Data",
+        data: [1, 2, 3, 4],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+        ],
+      },
+    ],
+  });
 
   useEffect(() => {
     get(mood_day_reference).then((res) => {
       console.log(res.val());
       const array: any[] = Object.values(res.val());
 
-      for (let i = 0; i < array.length; i++) {  
+      for (let i = 0; i < array.length; i++) {
         colourCount[array[i].emotion as keyof typeof colourCount] += 1;
       }
 
@@ -196,9 +190,9 @@ function MoodCard() {
             </p>
           ) : null}
           {hasCurrentMoodData ? (
-            <Planet mood={mood} color={colour} size={150} />
+            <Planet mood={mood as KawaiiMood} color={colour} size={150} />
           ) : (
-            <Browser mood={mood} color={colour} size={150} />
+            <Browser mood={mood as KawaiiMood} color={colour} size={150} />
           )}
         </div>
         <div className="pt-5 px-6">
