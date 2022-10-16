@@ -85,7 +85,7 @@ function ActionCard() {
 
   // Day Mood Donut Fetching Data
   // -------------------------------------------------------------------------------------------
-  let [actionCount, setColourCount] = useState({
+  let [actionCount, setActionCount] = useState({
     sleep: 0,
     play: 0,
     quiet: 0,
@@ -126,6 +126,8 @@ function ActionCard() {
       for (let i = 0; i < array.length; i++) {  
         actionCount[array[i].action as keyof typeof actionCount] += 1;
       }
+setActionDonut
+      setActionCount(actionCount);
     });
   }, [action_current_data]);
 
