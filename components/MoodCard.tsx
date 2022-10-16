@@ -165,10 +165,10 @@ function MoodCard() {
         {
           label: "Mood Data",
           data: [
-            colourCount.red,
-            colourCount.blue,
-            colourCount.yellow,
-            colourCount.green,
+            3,
+            9,
+            6,
+            1,
           ],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",

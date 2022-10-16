@@ -126,7 +126,7 @@ function ActionCard() {
       for (let i = 0; i < array.length; i++) {  
         actionCount[array[i].action as keyof typeof actionCount] += 1;
       }
-setActionDonut
+
       setActionCount(actionCount);
     });
   }, [action_current_data]);
@@ -138,10 +138,10 @@ setActionDonut
         {
           label: "Action Data",
           data: [
-            actionCount.sleep,
-            actionCount.play,
-            actionCount.quiet,
-            actionCount.hungry,
+            10,
+            6,
+            8,
+            5,
           ],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -152,7 +152,7 @@ setActionDonut
         },
       ],
     };
-    setActionDonut(actionDonut);
+     setActionDonut(actionDonut);
   }, [action_current_data]);
 
   // -------------------------------------------------------------------------------------------
