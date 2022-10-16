@@ -1,3 +1,3 @@
-import database from "./firebaseInit";
+//
 
-// will make 
+export const ten =10;
