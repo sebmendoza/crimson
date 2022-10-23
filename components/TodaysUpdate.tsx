@@ -18,7 +18,6 @@ import {
 import { db } from "../backend/firebaseInit";
 
 function TodaysUpdate() {
-
   const [data, setData] = useState<any>({});
   const reference = ref(db, "/device/");
 
@@ -28,7 +27,7 @@ function TodaysUpdate() {
     });
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="h-screen">
