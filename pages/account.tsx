@@ -14,12 +14,12 @@ function Account() {
 
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser: any) => {
-      setUser(currentUser);
-      // console.log({ user });
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser: any) => {
+  //     setUser(currentUser);
+  //     // console.log({ user });
+  //   });
+  // }, []);
 
   const register = async () => {
     try {

@@ -90,11 +90,11 @@ function MoodCard() {
     orderByChild("/emotion/")
   );
 
-  useEffect(() => {
-    onChildAdded(mood_current_reference, (mood_current_data) => {
-      setMoodCurrentData(mood_current_data.val());
-    });
-  }, []);
+  // useEffect(() => {
+  //   onChildAdded(mood_current_reference, (mood_current_data) => {
+  //     setMoodCurrentData(mood_current_data.val());
+  //   });
+  // }, []);
 
   const hasCurrentMoodData: boolean = mood_current_data?.emotion ? true : false;
 
@@ -139,37 +139,37 @@ function MoodCard() {
     ],
   });
 
-  useEffect(() => {
-    get(mood_day_reference).then((res) => {
-      // console.log(res.val());
-      const array: any[] = Object.values(res.val());
+  // useEffect(() => {
+  //   get(mood_day_reference).then((res) => {
+  //     // console.log(res.val());
+  //     const array: any[] = Object.values(res.val());
 
-      for (let i = 0; i < array.length; i++) {
-        colourCount[array[i].emotion as keyof typeof colourCount] += 1;
-      }
+  //     for (let i = 0; i < array.length; i++) {
+  //       colourCount[array[i].emotion as keyof typeof colourCount] += 1;
+  //     }
 
-      setColourCount(colourCount);
-    });
-  }, [mood_current_data]);
+  //     setColourCount(colourCount);
+  //   });
+  // }, [mood_current_data]);
 
-  useEffect(() => {
-    let moodDonut = {
-      labels: ["Red", "Blue", "Yellow", "Green"],
-      datasets: [
-        {
-          label: "Mood Data",
-          data: [3, 9, 6, 1],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-          ],
-        },
-      ],
-    };
-    setMoodDonut(moodDonut);
-  }, [mood_current_data]);
+  // useEffect(() => {
+  //   let moodDonut = {
+  //     labels: ["Red", "Blue", "Yellow", "Green"],
+  //     datasets: [
+  //       {
+  //         label: "Mood Data",
+  //         data: [3, 9, 6, 1],
+  //         backgroundColor: [
+  //           "rgba(255, 99, 132, 0.2)",
+  //           "rgba(54, 162, 235, 0.2)",
+  //           "rgba(255, 206, 86, 0.2)",
+  //           "rgba(75, 192, 192, 0.2)",
+  //         ],
+  //       },
+  //     ],
+  //   };
+  //   setMoodDonut(moodDonut);
+  // }, [mood_current_data]);
 
   // -------------------------------------------------------------------------------------------
   return (

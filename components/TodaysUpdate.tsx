@@ -21,11 +21,11 @@ function TodaysUpdate() {
   const [data, setData] = useState<any>({});
   const reference = ref(db, "/device/");
 
-  useEffect(() => {
-    onChildAdded(reference, (data) => {
-      setData(data.val());
-    });
-  }, []);
+  // useEffect(() => {
+  //   onChildAdded(reference, (data) => {
+  //     setData(data.val());
+  //   });
+  // }, []);
 
   // console.log(data);
 
