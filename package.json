@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.12",
-    "chart.js": "^3.5.0",
+    "chart.js": "^3.9.1",
     "faker": "^6.6.6",
     "firebase": "^9.12.1",
     "firebase-react-hooks": "^0.8.0",
