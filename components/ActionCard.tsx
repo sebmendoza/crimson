@@ -62,11 +62,11 @@ function ActionCard() {
     orderByChild("/action/")
   );
 
-  useEffect(() => {
-    onChildAdded(action_current_reference, (action_current_data) => {
-      setActionCurrentData(action_current_data.val());
-    });
-  }, []);
+  // useEffect(() => {
+  //   onChildAdded(action_current_reference, (action_current_data) => {
+  //     setActionCurrentData(action_current_data.val());
+  //   });
+  // }, []);
 
   const hasCurrentActionData: boolean = action_current_data?.action
     ? true
@@ -111,37 +111,37 @@ function ActionCard() {
     ],
   });
 
-  useEffect(() => {
-    get(action_day_reference).then((res) => {
-      // console.log(res.val());
-      const array: any[] = Object.values(res.val());
+  // useEffect(() => {
+  //   get(action_day_reference).then((res) => {
+  //     // console.log(res.val());
+  //     const array: any[] = Object.values(res.val());
 
-      for (let i = 0; i < array.length; i++) {
-        actionCount[array[i].action as keyof typeof actionCount] += 1;
-      }
+  //     for (let i = 0; i < array.length; i++) {
+  //       actionCount[array[i].action as keyof typeof actionCount] += 1;
+  //     }
 
-      setActionCount(actionCount);
-    });
-  }, [action_current_data]);
+  //     setActionCount(actionCount);
+  //   });
+  // }, [action_current_data]);
 
-  useEffect(() => {
-    let actionDonut = {
-      labels: ["Sleep", "Play", "Quiet", "Hungry"],
-      datasets: [
-        {
-          label: "Action Data",
-          data: [10, 6, 8, 5],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-          ],
-        },
-      ],
-    };
-    setActionDonut(actionDonut);
-  }, [action_current_data]);
+  // useEffect(() => {
+  //   let actionDonut = {
+  //     labels: ["Sleep", "Play", "Quiet", "Hungry"],
+  //     datasets: [
+  //       {
+  //         label: "Action Data",
+  //         data: [10, 6, 8, 5],
+  //         backgroundColor: [
+  //           "rgba(255, 99, 132, 0.2)",
+  //           "rgba(54, 162, 235, 0.2)",
+  //           "rgba(255, 206, 86, 0.2)",
+  //           "rgba(75, 192, 192, 0.2)",
+  //         ],
+  //       },
+  //     ],
+  //   };
+  //   setActionDonut(actionDonut);
+  // }, [action_current_data]);
 
   // -------------------------------------------------------------------------------------------
   return (
