@@ -18,7 +18,7 @@ function DashNav() {
           <div className="relative h-36 w-36">
             <Image
               layout="fill"
-              src="../public/profile2.png"
+              src="/public/profile2.png"
               className="rounded-full "
               alt="profile photo"
             />
