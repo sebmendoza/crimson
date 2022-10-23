@@ -1,7 +1,8 @@
-# The Project: Crimson Cube  
+# HackHarvard Project: Crimson Cube  
 ![Crimson Logo](https://github.com/sebmendoza/crimson-crashers/blob/main/public/Logo.svg)
 
-# The Project: Crimson Cube  
+# The Project: Crimson Cube 
+Check us out on [Devpost](https://devpost.com/software/crimson-crashers).
 
 ## About
 Communication can be a major challenge for certain children. Parents, teachers, and friends can struggle to connect with them, leading to strains in these adolescent relationships. **Crimson** hopes to change that. Our product promotes innovative communication strategies, helps develops interpersonal connections, and aids those with communication disabilities. But how?
