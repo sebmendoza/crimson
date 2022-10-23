@@ -13,10 +13,10 @@ function Dashboard() {
         <DashNav />
         <div className="flex flex-col justify-center grow">
           <div className="shadow-xl max-w-5xl  rounded-3xl  ml-24">
-            <TimeGraph />
+            {/* <TimeGraph /> */}
           </div>
           <div className="shadow-xl max-w-5xl  rounded-3xl  ml-24 ">
-            <BarGraph />
+            {/* <BarGraph /> */}
           </div>
         </div>
       </div>
