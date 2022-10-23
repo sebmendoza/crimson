@@ -17,13 +17,16 @@ Communication Features:
 - A fidget tracker that measures emotions like anxiety and restlessness.
 - A 4-setting dial that indicates action items like sleep, eating, sleeping and quiet time.
 
-2. **The Interactive Application**
+2. **The Application**
 
 The Crimson website allows a user to keep up to date with their kid and his/her actions! Quick status pages with donut graphs allows for fast information on mood and action items -- such as hungry or sad. Quick info on this the page informs users about the last time your child/student used the cube, what they were feeling, and how they have been doing for the current day. 
 
 More in depth graphs and analysis is found in the More Details section. Here, larger informatics explore trends between variables that let the user understand their child/students across weeks or even months.
 
+Click [here](https://crimson-crashers.vercel.app/) to visit the website!
+
 Click [here](https://tinyurl.com/crimson-cube2022) for App Walkthrough!
+
 Click [here](https://youtu.be/gwC_sbviAk4) for Project Demo!
 
 ## The Build
@@ -40,7 +43,7 @@ The Crimson Cube runs on the NodeMCU ESP8266 microcontroller. The different comm
 The Crimson Cube employs SLS 3D-printing technology for all of the mechanical aspects of the device. Designed on OnShape and printed overnight. 
 
 ### Software
-The web application is built with Next.js, React and Firebase. The website is interactive to support different devices, as this application is useful on the phone for when a user is on the go.
+The web application is built with Next.js, React and Firebase.  Nextjs was our go to solution for easy routing with a non-SPA website and was perfect for hosting on its parent company Vercel. Our team was most comfortable with and thus used React's component based structure and it's useful functional component programming. Firebase was implemented as a server to fetch cloud sensor data in JSON to be used for informational and graphical display. The website is fully responsive, built with mobile-first design using TailwindCSS, a neccessity for when a user is on the go.
 
 ## Next Steps
-We have some bugs that need to be ironed out as this is a 'hacked' project, but we are excited to fix hardware and troubleshoot some software to iterate on this product!
+We have some bugs that need to be ironed out as this is a 'hacked' project, but we are excited to fix hardware and troubleshoot some software to iterate on this product!  We plan to integrate firebase authentication while reorganizing our UI for the clearest communication on our dashboards.
